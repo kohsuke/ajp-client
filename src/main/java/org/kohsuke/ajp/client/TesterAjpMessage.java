@@ -37,6 +37,10 @@ public class TesterAjpMessage extends AjpMessage {
         super(packetSize);
     }
 
+    public byte[] raw() {
+        return buf;
+    }
+
     public byte readByte() {
         return buf[pos++];
     }
