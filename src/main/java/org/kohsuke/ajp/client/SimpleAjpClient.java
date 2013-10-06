@@ -50,15 +50,13 @@ public class SimpleAjpClient {
     private int port = -1;
     private Socket socket = null;
 
-    public void setPort(int port) {
-        this.port = port;
-    }
-
     public int getPort() {
         return port;
     }
 
-    public void connect() throws IOException {
+    public void connect(String host, int port) throws IOException {
+        this.host = host;
+        this.port = port;
         socket = SocketFactory.getDefault().createSocket(host, port);
     }
 
