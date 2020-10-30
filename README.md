@@ -35,3 +35,8 @@ The following code examples shows a usage of this library in the original Tomcat
     }
 
     ac.disconnect();
+    
+#### Fork Update
+
+* Added query support
+* Added runnable main
