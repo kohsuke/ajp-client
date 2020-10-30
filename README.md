@@ -38,5 +38,6 @@ The following code examples shows a usage of this library in the original Tomcat
     
 #### Fork Update
 
-* Added query support
-* Added runnable main
+* Added query param support
+* Added runnable main in fat jar `mvn assembly:assembly`
+    
