@@ -39,5 +39,6 @@ The following code examples shows a usage of this library in the original Tomcat
 #### Fork Update
 
 * Added query param support
+* Increase default packet size to 16kb 
 * Added runnable main in fat jar `mvn assembly:assembly`
     
