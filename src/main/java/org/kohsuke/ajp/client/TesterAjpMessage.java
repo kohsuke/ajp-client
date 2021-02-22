@@ -31,7 +31,7 @@ import java.util.List;
 public class TesterAjpMessage extends AjpMessage {
 
     private final List<Header> headers = new ArrayList<Header>();
-
+    private String query = null;
 
     public TesterAjpMessage(int packetSize) {
         super(packetSize);
@@ -91,6 +91,9 @@ public class TesterAjpMessage extends AjpMessage {
         headers.add(new Header(name, value));
     }
 
+    public void setQuery(String query){
+        this.query =query;
+    }
 
     @Override
     public void end() {
@@ -101,6 +104,10 @@ public class TesterAjpMessage extends AjpMessage {
             header.append(this);
         }
 
+        if(query!=null){
+            this.appendByte((byte)5);
+            this.appendString(query);
+        }
         // Terminator
         appendByte(0xFF);
 

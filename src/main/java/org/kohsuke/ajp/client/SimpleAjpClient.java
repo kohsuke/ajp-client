@@ -33,7 +33,7 @@ import javax.net.SocketFactory;
  */
 public class SimpleAjpClient {
 
-    private static final int AJP_PACKET_SIZE = 8192;
+    private static final int AJP_PACKET_SIZE = 16384;
     private static final byte[] AJP_CPING;
 
     static {
@@ -90,8 +90,13 @@ public class SimpleAjpClient {
         // Protocol
         message.appendString("http");
 
+        String[] parts = url.split("\\?");
         // Request URI
-        message.appendString(url);
+        message.appendString(parts[0]);
+
+        if(parts.length > 1)
+        message.setQuery(parts[1]);
+
 
         // Remote address
         message.appendString("10.0.0.1");
@@ -108,6 +113,20 @@ public class SimpleAjpClient {
         // Is ssl
         message.appendByte(0x00);
 
+        /*
+         this.setString(host);
+        this.setInt(url.getDefaultPort());
+        this.setByte((byte)("https".equalsIgnoreCase(scheme) ? 1 : 0));
+        this.setInt(this.getHeaderSize());
+        this.setConnectionHeaders(host);
+        query = url.getQuery();
+        if (query != null) {
+            this.setByte((byte)5);
+            this.setString(query);
+        }
+
+        this.setByte((byte)-1);
+         */
         return message;
     }
 
